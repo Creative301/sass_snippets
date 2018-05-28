@@ -1,0 +1,97 @@
+$color-primary: #55c57a;
+$color-white: #fff;
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 75em;
+    padding: 0 1em;
+    margin: 0 auto;
+    position: relative;
+}
+
+.navigation {
+  &__nav {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1500;
+
+  }
+
+  &__list {
+    @include absPos;
+    list-style: none;
+    text-align: center;
+  }
+
+  &__item {
+    margin: 1rem;
+
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      display: inline-block;
+      font-size: 3rem;
+      font-weight: 300;
+      padding: 1rem 2rem;
+      color: $color-white;
+      text-decoration: none;
+      text-transform: uppercase;
+      // Efek warna loading
+      background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+      background-size: 225%;
+      transition: all .4s;
+    }
+
+    &:hover,
+    &:active {
+      // Efek warna loading
+      background-position: 100%;
+      color: $color-primary;
+      transform: translateX(1rem);
+
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
