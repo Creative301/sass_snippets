@@ -1,0 +1,156 @@
+$color-primary: #55c57a;
+$color-white: #fff;
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 75em;
+    padding: 0 1em;
+    margin: 0 auto;
+    position: relative;
+}
+
+// Media Query Manager
+/*
+0 - 600px:  phone
+600 - 900px: tablet portrait
+900 - 1200px: tablet landscape
+1200 - 1800: normal styles
+>1800 : big desktop
+
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+1em = 16px
+*/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 37.5em ) {@content}; //600px
+  }
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width:56.25em ) {@content}; //900px
+  }
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {@content}; //1200px
+  }
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 112.5em) {@content}; //1800px
+  }
+
+}
+
+
+html {
+  /* This define 1rem = 10px */
+  font-size: 62.5%; // 1rem = 10px; 10px/16px = 62.5%
+
+  @include respond(tab-land) { // width < 900
+    font-size: 56.25%; // 1rem = 9px, 9/16 = 56.25%
+  }
+
+  @include respond(tab-port) { // width < 600
+    font-size: 50%; // 1rem = 8px, 8/16 = 50%
+  }
+ 
+  @include respond(big-desktop) {
+    font-size: 75%; // 1rem = 12, 12/16=75%
+  }
+}
+
+
+// Media query to detect touch devices
+  @media(max-width:56.25em ),
+  only screen and (hover:none) {
+
+  }
+
+
+
+
+body {
+  box-sizing: border-box;
+  padding: 3rem;
+
+  @include respond(tab-port) { 
+    font-size: 50%; 
+    padding: 0;
+  }
+}
+
+
+.heading-primary {
+  color: $color-white;
+  text-transform: uppercase;
+  text-align: center;
+  backface-visibility: hidden;
+  /* menghilangkan getaran di animasi*/
+  margin-bottom: 6rem;
+
+    &--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    margin: 0 auto;
+    animation-name: moveInLeft;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+
+    @include respond(phone) {
+      letter-spacing: 1rem;
+      font-size: 5rem;
+    }
+  }
+  &--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    margin: 0 auto;
+    animation: moveInRight 3s ease-out;
+    /* animation-delay: 3s;
+    animation-iteration-count: 3; */
+
+    @include respond(phone) {
+      letter-spacing: .5rem;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
