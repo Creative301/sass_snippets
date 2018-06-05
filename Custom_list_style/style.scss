@@ -1,0 +1,60 @@
+// COLORS
+$primary: #eb2f64;
+$primary-light: #FF3366;
+$primary-dark: #BA265D;
+
+$grey-light-1: #faf9f9;
+$grey-light-2: #f4f2f2;
+$grey-light-3: #f0eeee;
+$grey-light-4: #ccc;
+
+$grey-dark-1: #333;
+$grey-dark-2: #777;
+$grey-dark-3: #999;
+
+$black-1: #000;
+
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+// LIST
+.list {
+  list-style: none;
+  margin: 3rem 0;
+  padding: 3rem 0;
+  border-top: $line;
+  border-bottom: $line;
+
+  display: flex;
+  flex-wrap: wrap;
+  
+  &__item {
+    flex: 0 0 50%;
+    margin-bottom: .7rem;
+  }
+
+  // Icon before list
+  &__item::before {
+    content: "";
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    margin-right: 0.7rem;
+
+    // Custom icon for older browser
+    background-image: url(../img/chevron-thin-right.svg);
+    background-size: cover;
+
+    // Custom icon and bg color for Newer browser - masks color
+    @supports (-webkit-mask-image:url()) or (mask-image:url()) {
+      background-color: $primary;
+      -webkit-mask-image: url(../img/chevron-thin-right.svg);
+      mask-image: url(../img/chevron-thin-right.svg);
+      -webkit-mask-size: cover;
+      mask-size: cover;
+      background-image: none;
+    }
+  }
+}
